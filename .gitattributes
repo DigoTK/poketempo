@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.dll -text
+*.pkmod -text
+*.zip -text
+*.png -text
+*.jpg -text

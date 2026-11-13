@@ -1,0 +1,50 @@
+id = "poketempo"
+name = "PokeTempo / PokeTime"
+version = "0.1.1"
+authors = ["DigoTK"]
+description = "Relogio independente: configure em Mods no launcher ou F1 no jogo. Painel PT-BR/EN opcional. / Independent clock: configure in launcher Mods or in-game F1. Optional PT-BR/EN panel."
+license = "MIT"
+loader = ">=0.6.0 <1.0.0"
+game = ["2.0.1"]
+platforms = ["windows-x64"]
+affects = "gameplay"
+
+[[settings]]
+key = "speed"
+type = "number"
+label = "Horas no jogo por hora real / Game hours per real hour"
+default = 4
+min = 0.5
+max = 120
+step = 0.5
+
+[[settings]]
+key = "paused"
+type = "bool"
+label = "Congelar horario / Freeze clock"
+default = false
+
+[[settings]]
+key = "offline"
+type = "bool"
+label = "Avancar com jogo fechado / Advance while closed"
+default = false
+restart = true
+
+[[settings]]
+key = "start_at"
+type = "text"
+label = "Data inicial / Initial date (YYYY-MM-DD HH:MM:SS)"
+description = "Vazio: usar horario do jogo na primeira vez. Retoma horario salvo depois. / Empty: use game time on first run, then resume saved clock."
+default = ""
+restart = true
+
+[[hooks."2.0.1"]]
+name = "calendar"
+target = "Clock::SetNow"
+kind = "replace"
+
+[[hooks."2.0.1"]]
+name = "advance"
+target = "TimeMgr::Update"
+kind = "take_over"

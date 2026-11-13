@@ -1,0 +1,12 @@
+build/
+backups/
+*.log
+research/
+dist/
+release/
+installation.json
+painel-preview.jpg
+__pycache__/
+*.pyc
+*.pdb
+*.lib
